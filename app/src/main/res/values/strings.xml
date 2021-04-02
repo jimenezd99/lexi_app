@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Lexi</string>
+    <!-- Strings related to login -->
+    <!-- Pantalla inicial -->
+    <string name="prompt_email">Correo electrónico</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_menu">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="olvide_contrasenia">Olvidé mi contraseña</string>
+    <string name="inicio_sesion">Iniciar sesión</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
+    <string name="conectar_con">Conectar con</string>
+    <!-- Pantalla crearCuenta-->
+    <string name="nombre">Nombre</string>
+    <string name="confirmar_contrasenia">Confirmar Contraseña</string>
+    <string name="boton_registrar">Registrar</string>
+    <!-- Pantalla elección de idioma-->
+    <string name="que_idioma_aprenderas">¿Qué idioma aprenderás hoy?</string>
+</resources>
