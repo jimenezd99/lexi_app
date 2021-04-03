@@ -18,4 +18,6 @@
     <color name="azul_pastel_2">#63BBFD</color>
     <color name="blanco_pastel">#F6E3F2</color>
     <color name="verde_pastel_3">#BDFA9C</color>
+    <color name="gris">#BCBBBB</color>
+    <color name="rojo">#F44336</color>
 </resources>
