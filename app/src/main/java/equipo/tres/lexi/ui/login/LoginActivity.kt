@@ -11,10 +11,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.Toast
+import android.widget.*
+import equipo.tres.lexi.MenuActivity
 import equipo.tres.lexi.PerfilActivity
 
 import equipo.tres.lexi.R
@@ -30,13 +28,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
+        val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
 
         btn_crear_cuenta.setOnClickListener {
             var intento: Intent = Intent(this, RegistroActivity::class.java)
             startActivity(intento)
         }
 
-
+        btn_trampa.setOnClickListener(){
+            var intent: Intent = Intent(this, MenuActivity::class.java)
+            startActivity(intent)
+        }
 
         // Este codigo ya estaba generado
         val username = findViewById<EditText>(R.id.username)

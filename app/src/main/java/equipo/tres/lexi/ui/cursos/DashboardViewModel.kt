@@ -1,4 +1,4 @@
-package equipo.tres.lexi.ui.dashboard
+package equipo.tres.lexi.ui.cursos
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

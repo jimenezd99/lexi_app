@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bgnmenu"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        android:textColor="@color/white"
+        android:layout_marginVertical="@dimen/margintop_intro"
+        android:textSize="@dimen/text_mensaje"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="@string/introduccion"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:background="@drawable/bgn_scroll_view1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_intro"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="@dimen/margin_intro"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:textStyle="normal"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif"
+            android:textSize="@dimen/text_intro"
+            android:text="@string/lorem_ipsum" />
+        <Button
+            android:id="@+id/btn_continuar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/btn_padding"
+            android:text="Continuar"
+            android:textSize="@dimen/text_intro"
+            android:background="@drawable/btn_azul"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+
+</LinearLayout>
