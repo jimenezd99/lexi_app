@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TemasActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/azul_pastel"
+        android:gravity="center_vertical"
+        android:paddingVertical="30dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:backgroundTint="@color/white"
+            app:backgroundTint="@null" />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nivel_10"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textAlignment="center"/>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+
+            <VideoView
+                android:id="@+id/video_leccion"
+                android:layout_width="match_parent"
+                android:layout_height="160dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="30dp">
+
+                <TextView
+                    android:id="@+id/titulo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Título"
+                    android:textSize="30sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:id="@+id/menu"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="200dp"
+                    android:src="@drawable/ic_baseline_menu_24"
+                    android:background="@drawable/round_button_menu"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_pregunta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Pregunta"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="30dp">
+
+                <Button
+                    android:id="@+id/btn_opcion1"
+                    android:layout_width="@dimen/button_option"
+                    android:layout_height="@dimen/button_option"
+                    android:background="@drawable/round_button_menu"
+                    android:text="Opción 1"
+                    android:textSize="@dimen/text_option"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@null"/>
+
+                <Button
+                    android:id="@+id/btn_opcion2"
+                    android:layout_width="@dimen/button_option"
+                    android:layout_height="@dimen/button_option"
+                    android:background="@drawable/round_button_menu"
+                    android:text="Opción 2"
+                    android:textSize="@dimen/text_option"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="30dp"
+                    app:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="30dp"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/btn_opcion3"
+                    android:layout_width="@dimen/button_option"
+                    android:layout_height="@dimen/button_option"
+                    android:background="@drawable/round_button_menu"
+                    android:text="Opción 3"
+                    android:textSize="@dimen/text_option"
+                    android:textAllCaps="false"
+                    app:backgroundTint="@null"/>
+
+                <Button
+                    android:id="@+id/btn_opcion4"
+                    android:layout_width="@dimen/button_option"
+                    android:layout_height="@dimen/button_option"
+                    android:background="@drawable/round_button_menu"
+                    android:text="Opción 4"
+                    android:textSize="@dimen/text_option"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="30dp"
+                    app:backgroundTint="@null"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgn_edit_text1"
+        app:menu="@menu/menu_navegation_home_cursos_perfil" />
+</LinearLayout>

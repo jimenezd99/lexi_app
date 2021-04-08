@@ -29,4 +29,14 @@
     <string name="inicio">Inicio</string>
     <string name="mis_cursos">Mis cursos</string>
     <string name="editar_perfil">Editar Perfil</string>
+    <string name="cursos_de_nombre">Cursos de Nombre</string>
+    <string name="boton_continuar">Continuar</string>
+    <string name="nivel_10">Nivel 10</string>
+    <string name="negocios">Negocios</string>
+    <string name="peliculas_series">Películas/Series</string>
+    <string name="deportes">Deportes</string>
+    <string name="m_sica">Música</string>
+    <string name="gastronom_a">Gastronomía</string>
+    <string name="historia">Historia</string>
+    <string name="moda">Moda</string>
 </resources>
