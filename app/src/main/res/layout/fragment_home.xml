@@ -4,19 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgnmenu"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="@dimen/fab_margin"
     tools:context=".ui.home.HomeFragment">
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/tv_bienvenida"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:fontFamily="sans-serif"
+        android:text="Hola, Nombre"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_bienvenida"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/tv_mensaje"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight=".01" />
+
+    <TextView
+        android:id="@+id/tv_mensaje"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="5dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="¿Qué idioma\n aprenderás hoy?"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_mensaje"
+        app:layout_constraintBottom_toTopOf="@id/gv_cursos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bienvenida"
+        app:layout_constraintVertical_weight=".03" />
+
+
+    <GridView
+        android:id="@+id/gv_cursos"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_cursos"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:background="@drawable/bgn_scroll_view1"
+        android:numColumns="2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_mensaje"
+        app:layout_constraintVertical_weight=".9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

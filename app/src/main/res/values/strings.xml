@@ -23,12 +23,13 @@
     <string name="nombre">Nombre</string>
     <string name="confirmar_contrasenia">Confirmar Contraseña</string>
     <string name="boton_registrar">Registrar</string>
-    <!-- Pantalla elección de idioma-->
+    <!-- Pantalla selección de idioma-->
     <string name="que_idioma_aprenderas">¿Qué idioma aprenderás hoy?</string>
     <string name="perfil">Perfil</string>
     <string name="inicio">Inicio</string>
     <string name="mis_cursos">Mis cursos</string>
     <string name="editar_perfil">Editar Perfil</string>
+
     <string name="cursos_de_nombre">Cursos de Nombre</string>
     <string name="boton_continuar">Continuar</string>
     <string name="nivel_10">Nivel 10</string>
