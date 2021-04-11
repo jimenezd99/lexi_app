@@ -4,7 +4,7 @@
     <!-- Pantalla inicial -->
     <string name="prompt_email">Correo electrónico</string>
     <string name="prompt_password">Contraseña</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in">Iniciar sesión</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -25,4 +25,8 @@
     <string name="boton_registrar">Registrar</string>
     <!-- Pantalla elección de idioma-->
     <string name="que_idioma_aprenderas">¿Qué idioma aprenderás hoy?</string>
+    <string name="perfil">Perfil</string>
+    <string name="inicio">Inicio</string>
+    <string name="mis_cursos">Mis cursos</string>
+    <string name="editar_perfil">Editar Perfil</string>
 </resources>

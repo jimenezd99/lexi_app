@@ -1,6 +1,7 @@
 package equipo.tres.lexi.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -14,8 +15,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import equipo.tres.lexi.PerfilActivity
 
 import equipo.tres.lexi.R
+import equipo.tres.lexi.RegistroActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,6 +29,16 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
+        val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
+
+        btn_crear_cuenta.setOnClickListener {
+            var intento: Intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intento)
+        }
+
+
+
+        // Este codigo ya estaba generado
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
