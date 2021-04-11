@@ -3,11 +3,12 @@
     <dimen name="activity_horizontal_margin">40dp</dimen>
     <dimen name="activity_vertical_margin">40dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_bienvenida">25sp</dimen>
-    <dimen name="text_mensaje">30sp</dimen>
-    <dimen name="height_cursos">550dp</dimen>
-    <dimen name="margintop_intro">20dp</dimen>
-    <dimen name="text_intro">19sp</dimen>
-    <dimen name="margin_intro">60dp</dimen>
-    <dimen name="btn_padding">20dp</dimen>
+
+   <dimen name="radius_gradient">15dp</dimen>
+    <dimen name="text_temas">19sp</dimen>
+    <dimen name="width_temas">115dp</dimen>
+    <dimen name="height_temas">75dp</dimen>
+    <dimen name="button_option">130dp</dimen>
+    <dimen name="text_option">20sp</dimen>
+    <dimen name="text_curso">17sp</dimen>
 </resources>

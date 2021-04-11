@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="3pt">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/id_curso"
+            android:layout_width="155dp"
+            android:layout_height="135dp"
+            android:layout_gravity="center"
+            android:src="@drawable/inglaterra"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nivel_curso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nivel 10"
+                android:textSize="@dimen/text_curso"
+                android:paddingTop="10dp"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/idioma_curso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Inglés"
+                android:textSize="@dimen/text_curso"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/progreso_curso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Progreso 58%"
+                android:textSize="@dimen/text_curso"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black"
+                android:gravity="center_horizontal"/>
+
+            <Button
+                android:id="@+id/btn_continuar"
+                android:layout_width="99dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="18dp"
+                android:textAllCaps="false"
+                android:background="@drawable/round_button3"
+                android:enabled="true"
+                android:textSize="13sp"
+                android:textColor="@color/white"
+                android:text="@string/boton_continuar"
+                app:backgroundTint="@null"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

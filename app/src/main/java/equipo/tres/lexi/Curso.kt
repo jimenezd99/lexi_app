@@ -1,4 +1,7 @@
 package equipo.tres.lexi
 
-data class Curso (var nombre: String, var image: Int, var  niveles: ArrayList<Nivel>, var progreso: Int){
+data class Curso (var bandera: Int,
+                  var nivel: String,
+                  var idioma: String,
+                  var progreso: String ) {
 }

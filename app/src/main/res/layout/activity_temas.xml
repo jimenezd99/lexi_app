@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TemasActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/azul_pastel"
+        android:gravity="center_vertical"
+        android:paddingVertical="30dp">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/ic_baseline_arrow_back_24"
+            android:backgroundTint="@color/white"
+            app:backgroundTint="@null" />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nivel_10"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textAlignment="center"/>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/temas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:text="Elige un Tema"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="126dp"
+                android:orientation="horizontal"
+                android:paddingTop="18dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tema_negocios"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient"
+                        android:src="@drawable/negocios" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_negocios"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="8dp"
+                        android:text="@string/negocios"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="80dp">
+
+                    <ImageView
+                        android:id="@+id/tema_peliculas"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient2"
+                        android:src="@drawable/peliculas" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_peliculas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="8dp"
+                        android:text="Películas"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="25dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tema_deportes"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient4"
+                        android:src="@drawable/deportes" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_deportes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="8dp"
+                        android:text="@string/deportes"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="80dp">
+
+                    <ImageView
+                        android:id="@+id/tema_musica"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient3"
+                        android:src="@drawable/musica" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_musica"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="8dp"
+                        android:text="@string/m_sica"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="25dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tema_gastronomia"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient5"
+                        android:src="@drawable/gastronomia" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_gastronomia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="8dp"
+                        android:text="@string/gastronom_a"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="80dp">
+
+                    <ImageView
+                        android:id="@+id/tema_historia"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient"
+                        android:src="@drawable/historia" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_historia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="8dp"
+                        android:text="@string/historia"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="18dp"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tema_moda"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient2"
+                        android:src="@drawable/moda" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_moda"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="3dp"
+                        android:text="@string/moda"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="80dp">
+
+                    <ImageView
+                        android:id="@+id/tema_tradiciones"
+                        android:layout_width="@dimen/width_temas"
+                        android:layout_height="@dimen/height_temas"
+                        android:background="@drawable/bgn_button_gradient4"
+                        android:src="@drawable/tradiciones" />
+
+                    <TextView
+                        android:id="@+id/tv_tema_tradiciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingTop="3dp"
+                        android:text="Tradiciones"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_temas" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@drawable/bgn_edit_text1"
+        app:menu="@menu/menu_navegation_home_cursos_perfil" />
+</LinearLayout>
