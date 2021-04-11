@@ -13,12 +13,12 @@ import android.widget.TextView
 
 class CursoAdapter: BaseAdapter {
 
-    var cursos = ArrayList<Curso>()
+    var cursos = ArrayList<MiCurso>()
     var context: Context? = null
 
-    constructor(context: Context, cursos: ArrayList<Curso>){
+    constructor(context: Context, miCursos: ArrayList<MiCurso>){
         this.context = context
-        this.cursos = cursos
+        this.cursos = miCursos
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

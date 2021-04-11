@@ -2,13 +2,12 @@ package equipo.tres.lexi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.GridView
 import android.widget.ListView
 
 class MisCursosActivity : AppCompatActivity() {
 
     var adapter: CursoAdapter? = null
-    var cursos = ArrayList<Curso>()
+    var cursos = ArrayList<MiCurso>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +22,7 @@ class MisCursosActivity : AppCompatActivity() {
     }
 
     fun cargarCursos(){
-        cursos.add(Curso(R.drawable.inglaterra, "Nivel 10","Inglés", "Progreso: 58%"))
-        cursos.add(Curso(R.drawable.francia, "Nivel 1","Francés", "Progreso: 10%"))
+        cursos.add(MiCurso(R.drawable.inglaterra, "Nivel 10","Inglés", "Progreso: 58%"))
+        cursos.add(MiCurso(R.drawable.francia, "Nivel 1","Francés", "Progreso: 10%"))
     }
 }
