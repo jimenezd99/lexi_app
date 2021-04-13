@@ -1,37 +1,29 @@
-package equipo.tres.lexi.ui.home
+package equipo.tres.lexi
 
 import android.content.Context
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.fragment.app.Fragment
-import equipo.tres.lexi.*
+import android.widget.BaseAdapter
+import android.widget.GridView
+import android.widget.ImageView
+import android.widget.TextView
+import equipo.tres.lexi.ui.home.HomeFragment
 
-class HomeFragment : Fragment() {
-
-    //private lateinit var homeViewModel: HomeViewModel
+class HomeActivity : AppCompatActivity() {
     var adapter: CursoAdapter? = null
     var cursos = ArrayList<Curso>()
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        //homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-
-        val gvCursos: GridView = root.findViewById(R.id.gv_cursos)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        val gvCursos: GridView = findViewById(R.id.gv_cursos)
 
         cargarCursos()
-        adapter = CursoAdapter(this.requireContext(), cursos)
+        adapter = CursoAdapter(this, cursos)
         gvCursos.adapter = adapter
-
-        return root
     }
 
     private fun cargarCursos() {

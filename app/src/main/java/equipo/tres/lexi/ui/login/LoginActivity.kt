@@ -12,11 +12,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import equipo.tres.lexi.MenuActivity
-import equipo.tres.lexi.PerfilActivity
-
-import equipo.tres.lexi.R
-import equipo.tres.lexi.RegistroActivity
+import equipo.tres.lexi.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -36,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btn_trampa.setOnClickListener(){
-            var intent: Intent = Intent(this, MenuActivity::class.java)
+            var intent: Intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
