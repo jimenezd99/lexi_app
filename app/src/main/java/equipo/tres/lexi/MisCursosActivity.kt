@@ -2,6 +2,7 @@ package equipo.tres.lexi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ListView
 
 class MisCursosActivity : AppCompatActivity() {
@@ -13,10 +14,17 @@ class MisCursosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_cursos)
         var listView: ListView = findViewById(R.id.listView) as ListView
+        val btn_back = findViewById(R.id.btn_back) as Button
+
         cargarCursos()
 
         adapter = CursoAdapter(this, cursos)
         listView.adapter = adapter
+
+        btn_back.setOnClickListener {
+            super.onBackPressed()
+
+        }
 
 
     }
