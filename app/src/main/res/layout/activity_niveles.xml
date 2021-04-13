@@ -28,7 +28,47 @@
                 android:textStyle="normal"
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif"
-                android:text="@string/introduccion"/>
+                android:text="@string/bienvenido"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margintop_intro"
+        android:layout_weight=".16">
+        <TableRow>
+            <Button
+                android:layout_width="wrap_content"
+                android:background="@drawable/round_button2"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/btn_basico"
+                android:text="Básico"
+                android:backgroundTint="@null"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:background="@drawable/round_button2"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:id="@+id/btn_intermedio"
+                android:backgroundTint="@null"
+                android:text="Intermedio"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:background="@drawable/round_button2"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:id="@+id/btn_avanzado"
+                android:backgroundTint="@null"
+                android:text="Avanzado"
+                android:layout_gravity="center"
+                />
         </TableRow>
     </TableLayout>
 

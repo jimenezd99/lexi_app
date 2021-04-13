@@ -20,4 +20,5 @@
     <dimen name="text_intro">19sp</dimen>
     <dimen name="margin_intro">60dp</dimen>
     <dimen name="btn_padding">20dp</dimen>
+    <dimen name="btn_progress">10dp</dimen>
 </resources>
