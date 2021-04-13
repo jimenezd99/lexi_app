@@ -1,5 +1,6 @@
 package equipo.tres.lexi
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.GridView
@@ -16,7 +17,11 @@ class IntroductionActivity: AppCompatActivity() {
         btn_back.setOnClickListener {
             super.onBackPressed()
         }
-        //homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        val btn_nivel= findViewById(R.id.btn_continuar) as Button
+        btn_nivel.setOnClickListener(){
+            var intent = Intent(this, LeccionAvanzadaActivity::class.java)
+            this!!.startActivity(intent)
+        }
 
     }
 }

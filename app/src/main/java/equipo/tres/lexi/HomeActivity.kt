@@ -35,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         cursos.add(Curso("Ruso", R.drawable.rusia, arrayListOf<Nivel>(), "0"))
         cursos.add(Curso("Japonés", R.drawable.japon, arrayListOf<Nivel>(), "0"))
         cursos.add(Curso("Coreano", R.drawable.corea, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Mandariín", R.drawable.china, arrayListOf<Nivel>(), "0"))
+        cursos.add(Curso("Mandarín", R.drawable.china, arrayListOf<Nivel>(), "0"))
     }
 
     class CursoAdapter : BaseAdapter {
