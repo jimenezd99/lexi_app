@@ -15,7 +15,7 @@ class NivelesActivity : AppCompatActivity() {
     var niveles = ArrayList<Nivel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro)
+        setContentView(R.layout.activity_niveles)
 
         val btn_back = findViewById(R.id.btn_back) as Button
 
@@ -31,7 +31,9 @@ class NivelesActivity : AppCompatActivity() {
         gvNiveles.adapter = adapter
     }
     private fun cargarNiveles(){
-        
+        niveles.add(Nivel("Nivel 1 Básico",R.drawable.basico,R.string.lorem_ipsum,"basico",66))
+        niveles.add(Nivel("Nivel 2 Básico",R.drawable.frases,R.string.lorem_ipsum,"basico",0))
+        niveles.add(Nivel("Nivel 2 Básico",R.drawable.profesiones,R.string.lorem_ipsum,"basico",0))
     }
 
     class NivelAdapter : BaseAdapter {
@@ -47,10 +49,10 @@ class NivelesActivity : AppCompatActivity() {
             var nivel = niveles[position]
             var inflator =
                 contexto!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            var vista = inflator.inflate(R.layout.cursos, null)
+            var vista = inflator.inflate(R.layout.nivel, null)
 
             var imagen = vista.findViewById(R.id.iv_imagenNivel) as ImageView
-            var nombre = vista.findViewById(R.id.tv_nivel) as TextView
+            var nombre = vista.findViewById(R.id.tv_nombre) as TextView
 
             imagen.setImageResource(nivel.image)
             nombre.setText(nivel.nombre)

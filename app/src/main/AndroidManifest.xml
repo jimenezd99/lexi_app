@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lexi">
         <activity android:name=".LeccionAvanzadaActivity">
-
         </activity>
         <activity android:name=".TemasActivity">
-
+        </activity>
+        <activity android:name=".NivelesActivity">
+        </activity>
+        <activity android:name=".IntroductionActivity">
         </activity>
         <activity android:name=".MisCursosActivity">
-
-
         </activity>
         <activity android:name=".PerfilActivity" />
         <activity android:name=".RegistroActivity" />
