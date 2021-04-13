@@ -49,25 +49,25 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="@dimen/fab_margin"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_marginRight="@dimen/fab_margin"
                     android:layout_height="match_parent">
                     <ImageView
                         android:id="@+id/progreso_nivel"
-                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginRight="5dp"
                         android:layout_width="40dp"
                         android:layout_height="@dimen/btn_progress"
                         android:src="@drawable/bgn_button_gradient2"/>
                     <ImageView
                         android:id="@+id/progreso_nivel2"
                         android:layout_width="40dp"
-                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginHorizontal="5dp"
                         android:layout_height="@dimen/btn_progress"
                         android:src="@drawable/bgn_button_gradient2"/>
                     <ImageView
                         android:id="@+id/progreso_nivel3"
                         android:layout_width="40dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_height="@dimen/btn_progress"
                         android:src="@drawable/bgn_progreso"/>
                 </TableRow>

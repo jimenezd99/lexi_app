@@ -33,7 +33,7 @@ class NivelesActivity : AppCompatActivity() {
     private fun cargarNiveles(){
         niveles.add(Nivel("Nivel 1 Básico",R.drawable.basico,R.string.lorem_ipsum,"basico",66))
         niveles.add(Nivel("Nivel 2 Básico",R.drawable.frases,R.string.lorem_ipsum,"basico",0))
-        niveles.add(Nivel("Nivel 2 Básico",R.drawable.profesiones,R.string.lorem_ipsum,"basico",0))
+        niveles.add(Nivel("Nivel 3 Básico",R.drawable.profesiones,R.string.lorem_ipsum,"basico",0))
     }
 
     class NivelAdapter : BaseAdapter {
