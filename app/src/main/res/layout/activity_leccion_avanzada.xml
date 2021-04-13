@@ -153,10 +153,5 @@
 
 
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bgn_edit_text1"
-        app:menu="@menu/menu_navegation_home_cursos_perfil" />
+
 </LinearLayout>

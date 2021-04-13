@@ -39,7 +39,7 @@ class CursoAdapter: BaseAdapter {
 
 
         btn_continuar.setOnClickListener {
-            var intent = Intent(context, LeccionAvanzadaActivity::class.java)
+            var intent = Intent(context, TemasActivity::class.java)
             context!!.startActivity(intent)
         }
 
