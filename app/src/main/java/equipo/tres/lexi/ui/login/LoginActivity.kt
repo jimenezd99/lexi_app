@@ -73,6 +73,8 @@ class LoginActivity : AppCompatActivity() {
 
             //Complete and destroy login activity once successful
             finish()
+            var intent: Intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         })
 
         username.afterTextChanged {
