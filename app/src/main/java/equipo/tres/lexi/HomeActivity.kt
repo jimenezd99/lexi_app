@@ -11,11 +11,36 @@ import android.widget.BaseAdapter
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
-import equipo.tres.lexi.ui.home.HomeFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
     var adapter: CursoAdapter? = null
     var cursos = ArrayList<Curso>()
+
+
+    private val nav = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_inicio -> {
+                val intent = Intent(this@HomeActivity, HomeActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_cursos -> {
+                val intent = Intent(this@HomeActivity, MisCursosActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_perfil -> {
+                val intent = Intent(this@HomeActivity, PerfilActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -24,7 +49,18 @@ class HomeActivity : AppCompatActivity() {
         cargarCursos()
         adapter = CursoAdapter(this, cursos)
         gvCursos.adapter = adapter
+
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView.setOnNavigationItemSelectedListener(nav)
+
+
+
+
+
+
     }
+
+
 
     private fun cargarCursos() {
         //var nombre: String, var image: Int, var  niveles: ArrayList<Nivel>, var progreso: Int

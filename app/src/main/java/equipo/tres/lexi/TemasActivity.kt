@@ -1,22 +1,48 @@
 package equipo.tres.lexi
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.GridView
 import android.widget.ListView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import equipo.tres.lexi.ui.Tema
 
 class TemasActivity : AppCompatActivity() {
     var adapter: TemaAdapter? = null
     var temas = ArrayList<Tema>()
 
+    private val nav = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_inicio -> {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_cursos -> {
+                val intent = Intent(this, MisCursosActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_perfil -> {
+                val intent = Intent(this, PerfilActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_temas)
         val btn_back = findViewById(R.id.btn_back) as Button
         var gridView: GridView = findViewById(R.id.gridView) as GridView
-
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView.setOnNavigationItemSelectedListener(nav)
         cargarTemas()
 
         adapter = TemaAdapter(this, temas)

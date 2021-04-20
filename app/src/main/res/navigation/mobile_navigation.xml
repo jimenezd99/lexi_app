@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_inicio">
 
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="equipo.tres.lexi.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    <activity
+        android:id="@+id/navigation_inicio"
+        android:name="equipo.tres.lexi.HomeActivity"
+        android:label="Inicio"
+        tools:layout="@layout/activity_home" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_cursos"
-        android:name="equipo.tres.lexi.ui.cursos.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_cursos" />
+        android:name="equipo.tres.lexi.MisCursosActivity"
+        android:label="Mis Cursos"
+        tools:layout="@layout/activity_mis_cursos" />
 
-    <fragment
+    <activity
         android:id="@+id/navigation_perfil"
-        android:name="equipo.tres.lexi.ui.notifications.NotificationsFragment"
+        android:name="equipo.tres.lexi.PerfilActivity"
         android:label="@string/perfil"
-        tools:layout="@layout/fragment_perfil" />
+        tools:layout="@layout/activity_perfil" />
 </navigation>

@@ -15,12 +15,12 @@ class MenuActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navController = findNavController(R.id.nav_view)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_cursos, R.id.navigation_perfil
+                R.id.navigation_inicio, R.id.navigation_cursos, R.id.navigation_perfil
             )
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)

@@ -8,16 +8,43 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class NivelesActivity : AppCompatActivity() {
 
     var adapter: NivelAdapter? = null
     var niveles = ArrayList<Nivel>()
+
+    private val nav = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_inicio -> {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_cursos -> {
+                val intent = Intent(this, MisCursosActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_perfil -> {
+                val intent = Intent(this, PerfilActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_niveles)
 
         val btn_back = findViewById(R.id.btn_back) as Button
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        navView.setOnNavigationItemSelectedListener(nav)
 
         btn_back.setOnClickListener {
             super.onBackPressed()
