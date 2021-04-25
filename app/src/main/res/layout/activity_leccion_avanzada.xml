@@ -148,6 +148,17 @@
                     app:backgroundTint="@null"/>
 
             </LinearLayout>
+            <Button
+                android:id="@+id/btn_continuar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button2"
+                android:enabled="true"
+                android:text="Continuar"
+                android:elevation="5dp"
+                app:backgroundTint="@null"/>
 
         </LinearLayout>
 
