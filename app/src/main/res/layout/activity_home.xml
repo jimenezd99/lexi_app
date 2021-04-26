@@ -13,7 +13,7 @@
     <TextView
         android:id="@+id/tv_bienvenida"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/fab_margin"
         android:fontFamily="sans-serif"
         android:text="Hola, Nombre"
@@ -24,7 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight=".01" />
+        app:layout_constraintVertical_weight=".05" />
 
     <TextView
         android:id="@+id/tv_mensaje"
@@ -42,13 +42,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_bienvenida"
-        app:layout_constraintVertical_weight=".03" />
+        app:layout_constraintVertical_weight=".07" />
 
 
     <GridView
         android:id="@+id/gv_cursos"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_cursos"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@drawable/bgn_scroll_view1"
