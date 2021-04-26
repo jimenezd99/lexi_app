@@ -117,6 +117,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/googleg_standard_color_18"
                 app:backgroundTint="@null"/>
+
+
         </LinearLayout>
 
         <TextView

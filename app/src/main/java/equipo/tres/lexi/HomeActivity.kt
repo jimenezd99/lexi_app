@@ -45,6 +45,14 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         val gvCursos: GridView = findViewById(R.id.gv_cursos)
+        val tv_bienvenida: TextView = findViewById(R.id.tv_bienvenida)
+        val bundle = intent.extras
+
+        if(bundle != null){
+            val nombre = bundle.getString("name")
+
+            tv_bienvenida.append(nombre)
+        }
 
         cargarCursos()
         adapter = CursoAdapter(this, cursos)

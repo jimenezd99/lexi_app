@@ -2,21 +2,35 @@ package equipo.tres.lexi.ui.login
 
 import android.app.Activity
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import equipo.tres.lexi.*
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import equipo.tres.lexi.HomeActivity
+import equipo.tres.lexi.R
+import equipo.tres.lexi.RegistroActivity
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
+    val RC_SIGN_IN = 343
+    val LOG_OUT = 234
+
+   lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +39,19 @@ class LoginActivity : AppCompatActivity() {
 
         val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
         val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
+        val login_google = findViewById<Button>(R.id.login_google)
+
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build()
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        login_google.setOnClickListener {
+            val signInIntent = mGoogleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
+        }
 
         btn_crear_cuenta.setOnClickListener {
             var intento: Intent = Intent(this, RegistroActivity::class.java)
@@ -108,6 +135,63 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        updateUI(account)
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            val task =
+                GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+
+        }
+        if(requestCode == LOG_OUT){
+            signOut()
+        }
+    }
+
+    private fun signOut() {
+        mGoogleSignInClient.signOut()
+            .addOnCompleteListener(this, OnCompleteListener<Void?> {
+                Toast.makeText(this,"Sesión terminada", Toast.LENGTH_SHORT).show()
+            })
+    }
+
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+
+            // Signed in successfully, show authenticated UI.
+            updateUI(account)
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            //Log.w(FragmentActivity.TAG, "signInResult:failed code=" + e.statusCode)
+            updateUI(null)
+        }
+    }
+
+    private fun updateUI(account: GoogleSignInAccount?) {
+        if(account != null){
+            var intent: Intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("name", account.displayName)
+            intent.putExtra("email", account.email)
+            startActivity(intent)
+        }
+
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
