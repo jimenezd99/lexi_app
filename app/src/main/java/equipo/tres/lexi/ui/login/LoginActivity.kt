@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.provider.BaseColumns
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
@@ -13,6 +14,9 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
 import equipo.tres.lexi.*
+import equipo.tres.lexi.conexion.ConexionSQLiteHelper
+import equipo.tres.lexi.entidades.Usuario
+import equipo.tres.lexi.utilidadesSQLite.Utilidades
 
 class LoginActivity : AppCompatActivity() {
 
@@ -25,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
         val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
+        val btnLogin= findViewById<Button>(R.id.login)
 
         btn_crear_cuenta.setOnClickListener {
             var intento: Intent = Intent(this, RegistroActivity::class.java)
@@ -34,6 +39,54 @@ class LoginActivity : AppCompatActivity() {
         btn_trampa.setOnClickListener(){
             var intent: Intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+        }
+
+        // Lee la BD en busca del usuario.
+        btnLogin.setOnClickListener {
+
+            val txtUserName = findViewById<EditText>(R.id.username)
+            val txtPassword = findViewById<EditText>(R.id.password)
+
+            val conn = ConexionSQLiteHelper(this)
+
+            val db = conn.readableDatabase
+
+            val projection = arrayOf(BaseColumns._ID,
+                Utilidades.TablaUsuario.COLUMN_NAME_NOMBRE,
+                Utilidades.TablaUsuario.COLUMN_NAME_PASSWORD,
+                Utilidades.TablaUsuario.COLUMN_NAME_CORREO)
+
+            val selection = "(${Utilidades.TablaUsuario.COLUMN_NAME_CORREO}, ${Utilidades.TablaUsuario.COLUMN_NAME_PASSWORD}) = (?, ?)"
+            val selectionArgs = arrayOf(txtUserName.text.toString(), txtPassword.text.toString())
+
+            val cursor = db.query(
+                Utilidades.TablaUsuario.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+            )
+
+            var usuario : Usuario? = null
+
+            with(cursor) {
+                while (moveToNext()) {
+                    usuario = Usuario(getString(1), getString(2), getString(3))
+                }
+            }
+
+            if (usuario != null) {
+                Toast.makeText(this, "Bienvenido ${usuario!!.nombre}", Toast.LENGTH_LONG).show()
+
+                var intent: Intent = Intent(this, HomeActivity::class.java)
+                intent.putExtra("usuario", usuario)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Credenciales incorrectas", Toast.LENGTH_LONG).show()
+            }
+
         }
 
         // Este codigo ya estaba generado
@@ -103,10 +156,10 @@ class LoginActivity : AppCompatActivity() {
                 false
             }
 
-            login.setOnClickListener {
+            /*login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
-            }
+            }*/
         }
     }
 
