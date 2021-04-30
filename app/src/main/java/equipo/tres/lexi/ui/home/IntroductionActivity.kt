@@ -1,10 +1,11 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.home
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.GridView
 import androidx.appcompat.app.AppCompatActivity
+import equipo.tres.lexi.ui.cursos.LeccionAvanzadaActivity
+import equipo.tres.lexi.R
 
 class IntroductionActivity: AppCompatActivity() {
 

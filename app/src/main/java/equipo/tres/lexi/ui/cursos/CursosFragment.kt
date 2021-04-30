@@ -10,21 +10,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import equipo.tres.lexi.R
 
-class DashboardFragment : Fragment() {
+class CursosFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var cursosViewModel: CursosViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        cursosViewModel =
+            ViewModelProvider(this).get(CursosViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_cursos, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        //val textView: TextView = root.findViewById(R.id.text_dashboard)
+        cursosViewModel.text.observe(viewLifecycleOwner, Observer {
+            //textView.text = it
         })
         return root
     }

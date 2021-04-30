@@ -7,19 +7,19 @@
 
     <activity
         android:id="@+id/navigation_inicio"
-        android:name="equipo.tres.lexi.HomeActivity"
+        android:name="equipo.tres.lexi.ui.home.HomeActivity"
         android:label="Inicio"
         tools:layout="@layout/activity_home" />
 
     <activity
         android:id="@+id/navigation_cursos"
-        android:name="equipo.tres.lexi.MisCursosActivity"
+        android:name="equipo.tres.lexi.ui.cursos.MisCursosActivity"
         android:label="Mis Cursos"
         tools:layout="@layout/activity_mis_cursos" />
 
     <activity
         android:id="@+id/navigation_perfil"
-        android:name="equipo.tres.lexi.PerfilActivity"
+        android:name="equipo.tres.lexi.ui.perfil.PerfilActivity"
         android:label="@string/perfil"
         tools:layout="@layout/activity_perfil" />
 </navigation>

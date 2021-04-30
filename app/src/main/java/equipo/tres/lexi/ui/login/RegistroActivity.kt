@@ -1,8 +1,9 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import equipo.tres.lexi.R
 
 class RegistroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

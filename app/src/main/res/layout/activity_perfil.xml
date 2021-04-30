@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bgn2"
-    tools:context=".PerfilActivity" >
+    tools:context=".ui.perfil.PerfilActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"

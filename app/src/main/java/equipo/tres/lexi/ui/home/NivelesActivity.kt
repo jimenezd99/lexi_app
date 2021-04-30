@@ -1,4 +1,4 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import equipo.tres.lexi.data.cursos.Nivel
+import equipo.tres.lexi.R
+import equipo.tres.lexi.ui.cursos.MisCursosActivity
+import equipo.tres.lexi.ui.perfil.PerfilActivity
 
 class NivelesActivity : AppCompatActivity() {
 
@@ -54,13 +58,38 @@ class NivelesActivity : AppCompatActivity() {
         val gvNiveles: GridView = findViewById(R.id.gv_niveles)
 
         cargarNiveles()
-        adapter = NivelAdapter(this, niveles)
+        adapter =
+            NivelAdapter(this, niveles)
         gvNiveles.adapter = adapter
     }
     private fun cargarNiveles(){
-        niveles.add(Nivel("Nivel 1 Básico",R.drawable.basico,R.string.lorem_ipsum,"basico",66))
-        niveles.add(Nivel("Nivel 2 Básico",R.drawable.frases,R.string.lorem_ipsum,"basico",0))
-        niveles.add(Nivel("Nivel 3 Básico",R.drawable.profesiones,R.string.lorem_ipsum,"basico",0))
+        niveles.add(
+            Nivel(
+                "Nivel 1 Básico",
+                R.drawable.basico,
+                R.string.lorem_ipsum,
+                "basico",
+                66
+            )
+        )
+        niveles.add(
+            Nivel(
+                "Nivel 2 Básico",
+                R.drawable.frases,
+                R.string.lorem_ipsum,
+                "basico",
+                0
+            )
+        )
+        niveles.add(
+            Nivel(
+                "Nivel 3 Básico",
+                R.drawable.profesiones,
+                R.string.lorem_ipsum,
+                "basico",
+                0
+            )
+        )
     }
 
     class NivelAdapter : BaseAdapter {

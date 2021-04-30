@@ -1,12 +1,12 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.home
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import equipo.tres.lexi.R
 
 class MenuActivity : AppCompatActivity() {
 
@@ -20,7 +20,9 @@ class MenuActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_inicio, R.id.navigation_cursos, R.id.navigation_perfil
+                R.id.navigation_inicio,
+                R.id.navigation_cursos,
+                R.id.navigation_perfil
             )
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
