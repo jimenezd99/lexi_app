@@ -46,4 +46,18 @@
     <string name="introduccion">Introducción</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin auctor vestibulum, mi ridiculus leo eget commodo litora ultrices semper nisi purus, at natoque pretium nec dictumst taciti arcu ullamcorper quam. Purus metus potenti nascetur sociis maecenas convallis donec eleifend augue platea, mattis dis phasellus semper orci dapibus ligula eros id aenean, tellus consequat tincidunt torquent tempor mi luctus cras fusce. Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin auctor vestibulum, mi ridiculus.</string>
     <string name="bienvenido">Bienvenido</string>
+    <string name="foto_de_perfil">Foto de perfil</string>
+    <string name="imagen_de_logro">Imagen de logro</string>
+    <string name="progreso">Progreso</string>
+    <string name="logros">Logros</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="imagen_de_logo">imagen de logo</string>
+    <string name="hola">Hola,</string>
+    <string name="que_idioma_aprenderas_hoy">¿Qué idioma aprenderás hoy?</string>
+    <string name="basico">Básico</string>
+    <string name="intermedio">Intermedio</string>
+    <string name="avanzado">Avanzado</string>
+    <string name="continuar">Continuar</string>
+    <string name="t_tulo">Título</string>
+    <string name="pregunta">Pregunta</string>
 </resources>

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/bgn_button_gradient"
+    android:background="@drawable/bgn4"
     android:layout_height="match_parent"
     tools:context=".ui.home.IntroductionActivity">
 
@@ -39,10 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/bgn_scroll_view1"
+        android:layout_marginHorizontal="@dimen/fab_margin"
         android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/fab_margin"
 
             android:orientation="vertical">
@@ -68,8 +69,9 @@
                 android:layout_gravity="center"
                 android:background="@drawable/btn_azul"
                 android:padding="@dimen/btn_padding"
-                android:text="Continuar"
-                android:textSize="@dimen/text_intro" />
+                android:text="@string/continuar"
+                android:textSize="@dimen/text_intro"
+                android:layout_marginBottom="@dimen/fab_margin"/>
         </LinearLayout>
 
     </ScrollView>

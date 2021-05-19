@@ -14,11 +14,12 @@
 
     <!--Falta logotipo-->
     <ImageView
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/logo"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:contentDescription="@string/imagen_de_logo" />
 
     <EditText
         android:id="@+id/username"
@@ -99,7 +100,7 @@
                 android:background="@drawable/com_facebook_button_icon"
                 android:backgroundTint="@color/com_facebook_blue"
                 app:backgroundTint="@null"
-                />
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/login_twitter"
@@ -108,7 +109,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/tw__composer_logo_blue"
                 android:backgroundTint="@color/tw__blue_default"
-                app:backgroundTint="@null"/>
+                app:backgroundTint="@null"
+                style="?android:attr/buttonBarButtonStyle" />
 
             <Button
                 android:id="@+id/login_google"
@@ -116,7 +118,8 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="10dp"
                 android:background="@drawable/googleg_standard_color_18"
-                app:backgroundTint="@null"/>
+                app:backgroundTint="@null"
+                style="?android:attr/buttonBarButtonStyle" />
 
 
         </LinearLayout>

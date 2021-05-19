@@ -24,7 +24,7 @@
             app:backgroundTint="@null" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/mis_cursos"
@@ -47,7 +47,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
@@ -72,7 +72,7 @@
                     android:id="@+id/listView"
                     android:layout_width="304dp"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="15dp"></ListView>
+                    android:layout_marginBottom="15dp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
