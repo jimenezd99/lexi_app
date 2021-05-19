@@ -60,4 +60,10 @@
     <string name="continuar">Continuar</string>
     <string name="t_tulo">Título</string>
     <string name="pregunta">Pregunta</string>
+    <string name="nivel_1">Nivel 1</string>
+    <string name="traduce">Traduce</string>
+    <string name="traduce_la_frase_aqui">Traduce la frase aquí</string>
+    <string name="en_espanol">En español</string>
+    <string name="completa">Completa</string>
+    <string name="usando_las_palabras">Usando las palabras:</string>
 </resources>
