@@ -19,9 +19,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
-import equipo.tres.lexi.HomeActivity
+import equipo.tres.lexi.ui.home.HomeActivity
 import equipo.tres.lexi.R
-import equipo.tres.lexi.RegistroActivity
 
 
 class LoginActivity : AppCompatActivity() {
@@ -38,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
-        val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
+       // val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
         val login_google = findViewById<Button>(R.id.login_google)
 
 
@@ -58,10 +57,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intento)
         }
 
-        btn_trampa.setOnClickListener(){
-            var intent: Intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        }
+//        btn_trampa.setOnClickListener(){
+//            var intent: Intent = Intent(this, HomeActivity::class.java)
+//            startActivity(intent)
+//        }
 
         // Este codigo ya estaba generado
         val username = findViewById<EditText>(R.id.username)

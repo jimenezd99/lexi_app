@@ -1,4 +1,4 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.cursos
 
 import android.content.Context
 import android.content.Intent
@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import equipo.tres.lexi.ui.Tema
+import equipo.tres.lexi.R
+import equipo.tres.lexi.data.cursos.Tema
 
 class TemaAdapter: BaseAdapter {
 

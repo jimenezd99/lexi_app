@@ -1,13 +1,15 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.cursos
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.GridView
-import android.widget.ListView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import equipo.tres.lexi.ui.Tema
+import equipo.tres.lexi.R
+import equipo.tres.lexi.data.cursos.Tema
+import equipo.tres.lexi.ui.home.HomeActivity
+import equipo.tres.lexi.ui.perfil.PerfilActivity
 
 class TemasActivity : AppCompatActivity() {
     var adapter: TemaAdapter? = null
@@ -56,13 +58,53 @@ class TemasActivity : AppCompatActivity() {
 
 
     fun cargarTemas(){
-        temas.add(Tema(R.drawable.negocios, "Negocios",R.drawable.bgn_button_gradient))
-        temas.add(Tema(R.drawable.peliculas, "Películas",R.drawable.bgn_button_gradient2))
-        temas.add(Tema(R.drawable.deportes, "Deportes",R.drawable.bgn_button_gradient4))
-        temas.add(Tema(R.drawable.musica, "Música",R.drawable.bgn_button_gradient3))
-        temas.add(Tema(R.drawable.gastronomia, "Gastronomía",R.drawable.bgn_button_gradient5))
-        temas.add(Tema(R.drawable.historia, "Historia",R.drawable.bgn_button_gradient))
-        temas.add(Tema(R.drawable.moda, "Moda",R.drawable.bgn_button_gradient2))
-        temas.add(Tema(R.drawable.tradiciones, "Tradiciones",R.drawable.bgn_button_gradient4))
+        temas.add(
+            Tema(
+                R.drawable.negocios, "Negocios",
+                R.drawable.bgn_button_gradient
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.peliculas, "Películas",
+                R.drawable.bgn_button_gradient2
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.deportes, "Deportes",
+                R.drawable.bgn_button_gradient4
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.musica, "Música",
+                R.drawable.bgn_button_gradient3
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.gastronomia, "Gastronomía",
+                R.drawable.bgn_button_gradient5
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.historia, "Historia",
+                R.drawable.bgn_button_gradient
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.moda, "Moda",
+                R.drawable.bgn_button_gradient2
+            )
+        )
+        temas.add(
+            Tema(
+                R.drawable.tradiciones, "Tradiciones",
+                R.drawable.bgn_button_gradient4
+            )
+        )
     }
 }

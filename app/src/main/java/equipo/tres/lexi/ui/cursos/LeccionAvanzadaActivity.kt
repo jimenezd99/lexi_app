@@ -1,9 +1,11 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.cursos
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import equipo.tres.lexi.ui.home.NivelesActivity
+import equipo.tres.lexi.R
 
 class LeccionAvanzadaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/bgn_button_gradient"
     android:layout_height="match_parent"
-    tools:context=".IntroductionActivity">
+    tools:context=".ui.home.IntroductionActivity">
 
     <TableLayout
         android:layout_width="match_parent"

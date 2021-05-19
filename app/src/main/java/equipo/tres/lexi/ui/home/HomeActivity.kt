@@ -1,4 +1,4 @@
-package equipo.tres.lexi
+package equipo.tres.lexi.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -12,6 +12,11 @@ import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import equipo.tres.lexi.data.cursos.Nivel
+import equipo.tres.lexi.R
+import equipo.tres.lexi.data.cursos.Curso
+import equipo.tres.lexi.ui.cursos.MisCursosActivity
+import equipo.tres.lexi.ui.perfil.PerfilActivity
 
 class HomeActivity : AppCompatActivity() {
     var adapter: CursoAdapter? = null
@@ -55,7 +60,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         cargarCursos()
-        adapter = CursoAdapter(this, cursos)
+        adapter =
+            CursoAdapter(this, cursos)
         gvCursos.adapter = adapter
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -72,14 +78,70 @@ class HomeActivity : AppCompatActivity() {
 
     private fun cargarCursos() {
         //var nombre: String, var image: Int, var  niveles: ArrayList<Nivel>, var progreso: Int
-        cursos.add(Curso("Inglés", R.drawable.inglaterra, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Francés", R.drawable.francia, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Alemán", R.drawable.alemania, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Italiano", R.drawable.italia, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Ruso", R.drawable.rusia, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Japonés", R.drawable.japon, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Coreano", R.drawable.corea, arrayListOf<Nivel>(), "0"))
-        cursos.add(Curso("Mandarín", R.drawable.china, arrayListOf<Nivel>(), "0"))
+        cursos.add(
+            Curso(
+                "Inglés",
+                R.drawable.inglaterra,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Francés",
+                R.drawable.francia,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Alemán",
+                R.drawable.alemania,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Italiano",
+                R.drawable.italia,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Ruso",
+                R.drawable.rusia,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Japonés",
+                R.drawable.japon,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Coreano",
+                R.drawable.corea,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
+        cursos.add(
+            Curso(
+                "Mandarín",
+                R.drawable.china,
+                arrayListOf<Nivel>(),
+                "0"
+            )
+        )
     }
 
     class CursoAdapter : BaseAdapter {

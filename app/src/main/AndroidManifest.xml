@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lexi" >
-        <activity android:name=".HomeActivity" >
+        <activity android:name=".ui.home.HomeActivity" >
         </activity>
-        <activity android:name=".LeccionAvanzadaActivity" >
+        <activity android:name=".ui.cursos.LeccionAvanzadaActivity" >
         </activity>
-        <activity android:name=".TemasActivity" >
+        <activity android:name=".ui.cursos.TemasActivity" >
         </activity>
-        <activity android:name=".NivelesActivity" >
+        <activity android:name=".ui.home.NivelesActivity" >
         </activity>
-        <activity android:name=".IntroductionActivity" >
+        <activity android:name=".ui.home.IntroductionActivity" >
         </activity>
-        <activity android:name=".MisCursosActivity" >
+        <activity android:name=".ui.cursos.MisCursosActivity" >
         </activity>
-        <activity android:name=".PerfilActivity" />
-        <activity android:name=".RegistroActivity" />
+        <activity android:name=".ui.perfil.PerfilActivity" />
+        <activity android:name=".ui.login.RegistroActivity" />
         <activity
-            android:name=".MenuActivity"
+            android:name=".ui.home.MenuActivity"
             android:label="@string/title_activity_menu" />
         <activity
             android:name=".ui.login.LoginActivity"
