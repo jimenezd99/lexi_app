@@ -19,31 +19,34 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import equipo.tres.lexi.ui.home.HomeActivity
 import equipo.tres.lexi.R
 
 
 class LoginActivity : AppCompatActivity() {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var loginViewModel: LoginViewModel
     val RC_SIGN_IN = 343
     val LOG_OUT = 234
 
-   lateinit var mGoogleSignInClient: GoogleSignInClient
+    lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-
+        auth = Firebase.auth
         val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
-       // val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
+        // val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
         val login_google = findViewById<Button>(R.id.login_google)
 
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build()
+            .requestEmail()
+            .build()
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -57,11 +60,6 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intento)
         }
 
-//        btn_trampa.setOnClickListener(){
-//            var intent: Intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
-//        }
-
         // Este codigo ya estaba generado
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
@@ -69,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
         val loading = findViewById<ProgressBar>(R.id.loading)
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-                .get(LoginViewModel::class.java)
+            .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
@@ -98,23 +96,24 @@ class LoginActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK)
 
             //Complete and destroy login activity once successful
-            finish()
-            var intent: Intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+
+            ingresarFirebase(username.text.toString(), password.text.toString())
+//            var intent: Intent = Intent(this, HomeActivity::class.java)
+//            startActivity(intent)
         })
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                username.text.toString(),
+                password.text.toString()
             )
         }
 
         password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                        username.text.toString(),
-                        password.text.toString()
+                    username.text.toString(),
+                    password.text.toString()
                 )
             }
 
@@ -122,8 +121,8 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                                username.text.toString(),
-                                password.text.toString()
+                            username.text.toString(),
+                            password.text.toString()
                         )
                 }
                 false
@@ -134,6 +133,29 @@ class LoginActivity : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
+    }
+
+    private fun ingresarFirebase(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+//                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+//                    updateUI(user)
+                    var intent: Intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    // If sign in fails, display a message to the user.
+//                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+//                    updateUI(null)
+                }
+            }
+
     }
 
     override fun onStart() {
@@ -156,7 +178,7 @@ class LoginActivity : AppCompatActivity() {
             handleSignInResult(task)
 
         }
-        if(requestCode == LOG_OUT){
+        if (requestCode == LOG_OUT) {
             signOut()
         }
     }
@@ -164,7 +186,7 @@ class LoginActivity : AppCompatActivity() {
     private fun signOut() {
         mGoogleSignInClient.signOut()
             .addOnCompleteListener(this, OnCompleteListener<Void?> {
-                Toast.makeText(this,"Sesión terminada", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Sesión terminada", Toast.LENGTH_SHORT).show()
             })
     }
 
@@ -184,7 +206,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI(account: GoogleSignInAccount?) {
-        if(account != null){
+        if (account != null) {
             var intent: Intent = Intent(this, HomeActivity::class.java)
             intent.putExtra("name", account.displayName)
             intent.putExtra("email", account.email)
@@ -198,9 +220,9 @@ class LoginActivity : AppCompatActivity() {
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
         Toast.makeText(
-                applicationContext,
-                "$welcome $displayName",
-                Toast.LENGTH_LONG
+            applicationContext,
+            "$welcome $displayName",
+            Toast.LENGTH_LONG
         ).show()
     }
 

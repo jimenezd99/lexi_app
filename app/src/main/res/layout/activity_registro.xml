@@ -102,7 +102,7 @@
             android:elevation="5dp"/>
 
         <Button
-            android:id="@+id/crear_cuenta"
+            android:id="@+id/btn_crear_cuenta"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="60dp"

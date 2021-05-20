@@ -11,7 +11,6 @@
         android:theme="@style/Theme.Lexi">
         <activity android:name=".ui.ejercicios.CompletarActivity"></activity>
         <activity android:name=".ui.ejercicios.OpcionesActivity" />
-        <activity android:name=".ui.ejercicios.MainActivity" />
         <activity android:name=".ui.ejercicios.TraducirActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.cursos.LeccionAvanzadaActivity" />
