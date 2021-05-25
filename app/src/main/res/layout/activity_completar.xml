@@ -78,6 +78,7 @@
                 android:textColor="@color/black"/>
 
             <LinearLayout
+                android:id="@+id/linearLayoutRespuestas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -89,6 +90,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/frase1_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="I "
@@ -103,6 +105,7 @@
                         android:inputType="text" />
 
                     <TextView
+                        android:id="@+id/frase1_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" happy"
@@ -117,6 +120,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/frase2_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="You "
@@ -131,6 +135,7 @@
                         android:inputType="text"/>
 
                     <TextView
+                        android:id="@+id/frase2_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" sad"
@@ -145,6 +150,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/frase3_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="He "
@@ -159,6 +165,7 @@
                         android:inputType="text"/>
 
                     <TextView
+                        android:id="@+id/frase3_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" angry"
@@ -173,6 +180,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/frase4_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="She "
@@ -187,6 +195,7 @@
                         android:inputType="text"/>
 
                     <TextView
+                        android:id="@+id/frase4_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" calm"
@@ -201,6 +210,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/frase5_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="It "
@@ -215,6 +225,7 @@
                         android:inputType="text"/>
 
                     <TextView
+                        android:id="@+id/frase5_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" pretty"
@@ -229,6 +240,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/frase6_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="The apple "
@@ -243,6 +255,7 @@
                         android:inputType="text"/>
 
                     <TextView
+                        android:id="@+id/frase6_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" red"
