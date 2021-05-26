@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bgn3"
-    tools:context=".MisCursosActivity" >
+    android:orientation="vertical"
+    tools:context=".ui.cursos.MisCursosActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,69 +24,57 @@
             app:backgroundTint="@null" />
 
         <TextView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="@string/mis_cursos"
+            android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="30sp"
-            android:textAlignment="center"/>
+            android:textSize="30sp" />
 
         <androidx.legacy.widget.Space
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginHorizontal="20dp"/>
+            android:layout_marginHorizontal="20dp" />
     </LinearLayout>
 
-    <ScrollView
-        android:layout_weight="1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="30dp"
-        android:background="@drawable/bgn_scroll_view1">
+        android:layout_marginVertical="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/bgn_scroll_view1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cursos_de"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/cursos_de_nombre"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fab_margin"
             android:orientation="vertical"
-            android:layout_marginVertical="10dp"
-            android:gravity="center_horizontal">
+            android:paddingHorizontal="30dp">
 
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp">
 
-
-            <TextView
-                android:id="@+id/cursos_de"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cursos_de_nombre"
-                android:textSize="25sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-light" />
-
-
-            <LinearLayout
-                android:layout_width="339dp"
-                android:layout_height="441dp"
-                android:layout_marginTop="65dp"
-                android:orientation="vertical"
-                android:paddingHorizontal="30dp">
-
-                <ListView
-                    android:id="@+id/listView"
-                    android:layout_width="304dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="15dp">
-
-
-                </ListView>
-
-
-            </LinearLayout>
-
-
+            </ListView>
 
         </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

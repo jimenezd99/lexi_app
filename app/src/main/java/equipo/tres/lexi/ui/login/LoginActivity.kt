@@ -2,38 +2,62 @@ package equipo.tres.lexi.ui.login
 
 import android.app.Activity
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.*
-import equipo.tres.lexi.*
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import equipo.tres.lexi.ui.home.HomeActivity
+import equipo.tres.lexi.R
+
 
 class LoginActivity : AppCompatActivity() {
-
+    private lateinit var auth: FirebaseAuth
     private lateinit var loginViewModel: LoginViewModel
+    val RC_SIGN_IN = 343
+    val LOG_OUT = 234
+
+    lateinit var mGoogleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-
+        auth = Firebase.auth
         val btn_crear_cuenta = findViewById<Button>(R.id.crear_cuenta)
-        val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
+        // val btn_trampa= findViewById<TextView>(R.id.recuperar_contrasenia)
+        val login_google = findViewById<Button>(R.id.login_google)
+
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        login_google.setOnClickListener {
+            val signInIntent = mGoogleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
+        }
 
         btn_crear_cuenta.setOnClickListener {
             var intento: Intent = Intent(this, RegistroActivity::class.java)
             startActivity(intento)
-        }
-
-        btn_trampa.setOnClickListener(){
-            var intent: Intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
         }
 
         // Este codigo ya estaba generado
@@ -43,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
         val loading = findViewById<ProgressBar>(R.id.loading)
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-                .get(LoginViewModel::class.java)
+            .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this@LoginActivity, Observer {
             val loginState = it ?: return@Observer
@@ -72,23 +96,24 @@ class LoginActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK)
 
             //Complete and destroy login activity once successful
-            finish()
-            var intent: Intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+
+            ingresarFirebase(username.text.toString(), password.text.toString())
+//            var intent: Intent = Intent(this, HomeActivity::class.java)
+//            startActivity(intent)
         })
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                username.text.toString(),
+                password.text.toString()
             )
         }
 
         password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                        username.text.toString(),
-                        password.text.toString()
+                    username.text.toString(),
+                    password.text.toString()
                 )
             }
 
@@ -96,8 +121,8 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                                username.text.toString(),
-                                password.text.toString()
+                            username.text.toString(),
+                            password.text.toString()
                         )
                 }
                 false
@@ -110,14 +135,94 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun ingresarFirebase(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+//                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+//                    updateUI(user)
+                    var intent: Intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    // If sign in fails, display a message to the user.
+//                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+//                    updateUI(null)
+                }
+            }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val account = GoogleSignIn.getLastSignedInAccount(this)
+        updateUI(account)
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            val task =
+                GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+
+        }
+        if (requestCode == LOG_OUT) {
+            signOut()
+        }
+    }
+
+    private fun signOut() {
+        mGoogleSignInClient.signOut()
+            .addOnCompleteListener(this, OnCompleteListener<Void?> {
+                Toast.makeText(this, "Sesión terminada", Toast.LENGTH_SHORT).show()
+            })
+    }
+
+
+    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
+        try {
+            val account = completedTask.getResult(ApiException::class.java)
+
+            // Signed in successfully, show authenticated UI.
+            updateUI(account)
+        } catch (e: ApiException) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            //Log.w(FragmentActivity.TAG, "signInResult:failed code=" + e.statusCode)
+            updateUI(null)
+        }
+    }
+
+    private fun updateUI(account: GoogleSignInAccount?) {
+        if (account != null) {
+            var intent: Intent = Intent(this, HomeActivity::class.java)
+            intent.putExtra("name", account.displayName)
+            intent.putExtra("email", account.email)
+            startActivity(intent)
+        }
+
+    }
+
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
         Toast.makeText(
-                applicationContext,
-                "$welcome $displayName",
-                Toast.LENGTH_LONG
+            applicationContext,
+            "$welcome $displayName",
+            Toast.LENGTH_LONG
         ).show()
     }
 

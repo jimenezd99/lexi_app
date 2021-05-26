@@ -4,9 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/bgn_button_gradient"
+    android:background="@drawable/bgn4"
     android:layout_height="match_parent"
-    tools:context=".IntroductionActivity">
+    tools:context=".ui.home.IntroductionActivity">
 
     <TableLayout
         android:layout_width="match_parent"
@@ -35,36 +35,46 @@
         </TableRow>
     </TableLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="@dimen/fab_margin"
         android:background="@drawable/bgn_scroll_view1"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tv_intro"
-            android:layout_width="match_parent"
-            android:layout_marginHorizontal="@dimen/margin_intro"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/fab_margin"
-            android:textStyle="normal"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:fontFamily="sans-serif"
-            android:textSize="@dimen/text_intro"
-            android:text="@string/lorem_ipsum" />
-        <Button
-            android:id="@+id/btn_continuar"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_weight="1">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/btn_padding"
-            android:text="Continuar"
-            android:textSize="@dimen/text_intro"
-            android:background="@drawable/btn_azul"
-            android:layout_gravity="center" />
-    </LinearLayout>
+            android:layout_marginHorizontal="@dimen/fab_margin"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_intro"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/fab_margin"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="@string/lorem_ipsum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_intro"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/btn_continuar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_azul"
+                android:padding="@dimen/btn_padding"
+                android:text="@string/continuar"
+                android:textSize="@dimen/text_intro"
+                android:layout_marginBottom="@dimen/fab_margin"/>
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>
