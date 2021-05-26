@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "135648459745",
+    "project_id": "lexiapp-f6702",
+    "storage_bucket": "lexiapp-f6702.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135648459745:android:af023a4612a947091270a0",
+        "android_client_info": {
+          "package_name": "equipo.tres.lexi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135648459745-g28b2qbhftodl25b4n1muev1dq1r6eag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2-FKgtetIwdYvy4DRtXh0ITeEWR2SrFg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "135648459745-g28b2qbhftodl25b4n1muev1dq1r6eag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

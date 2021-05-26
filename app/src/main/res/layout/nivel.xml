@@ -12,7 +12,8 @@
         android:orientation="horizontal"
         android:background="@drawable/border"
         android:paddingLeft="@dimen/fab_margin"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:layout_width="90dp"

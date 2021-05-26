@@ -128,7 +128,7 @@ class HomeFragment : Fragment() {
 
             imagen.setOnClickListener() {
                 var intent = Intent(contexto, NivelesActivity::class.java)
-                intent.putExtra("nombre", curso.nombre)
+                intent.putExtra("idioma", curso.nombre)
                 intent.putExtra("imagen", curso.image)
                 intent.putExtra("niveles", curso.niveles)
                 intent.putExtra("progreso", (curso.progreso))
