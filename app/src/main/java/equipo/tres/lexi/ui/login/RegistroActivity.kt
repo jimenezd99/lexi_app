@@ -66,7 +66,7 @@ class RegistroActivity : AppCompatActivity() {
 //                    Log.d(TAG, "createUserWithEmail:success")
                     val user = usuario.currentUser
                     registrarDatosUsuario(email, nombre)
-                    Toast.makeText(baseContext, "${user?.email} se ha creado correctamente el usuario.", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(baseContext, "${user?.email} se ha creado correctamente el usuario.", Toast.LENGTH_SHORT).show()
 //                    updateUI(user)
                     finish()
                 } else {
@@ -87,7 +87,7 @@ class RegistroActivity : AppCompatActivity() {
         storage.collection("usuarios")
             .add(userData)
             .addOnSuccessListener {
-                Toast.makeText(baseContext, " se ha guardado correctamente la info del usuario.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(baseContext, " se ha guardado correctamente la info del usuario.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
                 Toast.makeText(baseContext, "No se ha guardado correctamente la info del usuario.", Toast.LENGTH_SHORT).show()
