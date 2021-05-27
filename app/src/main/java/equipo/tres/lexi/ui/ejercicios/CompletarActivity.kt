@@ -1,10 +1,13 @@
 package equipo.tres.lexi.ui.ejercicios
 
 import android.content.Intent
+import android.graphics.DrawFilter
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import equipo.tres.lexi.R
 import equipo.tres.lexi.ui.home.NivelesActivity
@@ -26,7 +29,7 @@ class CompletarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_completar)
 
         val btn_back = findViewById(R.id.btn_back) as Button
-        val btn_nivel= findViewById(R.id.btn_continuar) as Button
+        val btn_nivel = findViewById(R.id.btn_continuar) as Button
 
         var idioma = intent.getStringExtra("idioma")
         var nombre = intent.getStringExtra("nombre")
@@ -39,9 +42,10 @@ class CompletarActivity : AppCompatActivity() {
 
         btn_back.setOnClickListener {
             super.onBackPressed()
+            finish()
         }
 
-        btn_nivel.setOnClickListener(){
+        btn_nivel.setOnClickListener() {
 
             var campoVacios = false
 
@@ -54,7 +58,11 @@ class CompletarActivity : AppCompatActivity() {
                         campoVacios = true
                     }
 
-                    myEditTextList.add((linearLayoutRespuestas.getChildAt(i) as LinearLayout).getChildAt(1) as EditText)
+                    myEditTextList.add(
+                        (linearLayoutRespuestas.getChildAt(i) as LinearLayout).getChildAt(
+                            1
+                        ) as EditText
+                    )
                 }
             }
 
@@ -62,7 +70,9 @@ class CompletarActivity : AppCompatActivity() {
                 var correctos = true
 
                 for (i in 0 until respuestasCorrectas.size) {
-                    if (!myEditTextList.get(i).text.toString().equals(respuestasCorrectas.get(i), true)) {
+                    if (!myEditTextList.get(i).text.toString()
+                            .equals(respuestasCorrectas.get(i), true)
+                    ) {
                         correctos = false
                     }
                 }
@@ -74,15 +84,45 @@ class CompletarActivity : AppCompatActivity() {
                     intent.putExtra("idioma", idioma)
                     intent.putExtra("nombre", nombre)
                     intent.putExtra("leccion", leccion)
+                    actualizarProgreso(idioma!!)
                     this!!.startActivity(intent)
+                    finish()
                 } else {
-                    Toast.makeText(baseContext, "Incorrecto. Revisa los campos.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext,
+                        "Incorrecto. Revisa los campos.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 Toast.makeText(baseContext, "Hay campos vacios", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
+
+    private fun actualizarProgreso(idioma: String) {
+        val idioma:String=idioma
+
+        storage.collection("progreso").whereEqualTo("usuario", usuario.currentUser?.email)
+            .whereEqualTo("idioma",idioma)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    storage.collection("progreso").document(document.id)
+                        .update("progreso", FieldValue.increment(4))
+                    Toast.makeText(this, "¡Progreso guardado!", Toast.LENGTH_SHORT)
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this,
+                    "Error: " + e.toString(),
+                    Toast.LENGTH_SHORT
+                )
+            }
+    }
+
 
     private fun cargarLeccion(idioma: String?, nombre: String?, leccion: String?) {
         if (idioma != null && nombre != null && leccion != null) {

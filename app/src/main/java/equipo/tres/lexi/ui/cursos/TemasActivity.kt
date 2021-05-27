@@ -52,7 +52,7 @@ class TemasActivity : AppCompatActivity() {
 
         btn_back.setOnClickListener {
             super.onBackPressed()
-
+            finish()
         }
     }
 

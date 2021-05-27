@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View.OnTouchListener
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import equipo.tres.lexi.R
 import kotlinx.android.synthetic.main.activity_opciones.*
@@ -37,6 +39,7 @@ class OpcionesActivity : AppCompatActivity() {
 
         btn_back.setOnClickListener {
             super.onBackPressed()
+            finish()
         }
 
         btn_nivel.setOnClickListener {
@@ -61,8 +64,9 @@ class OpcionesActivity : AppCompatActivity() {
                     intent.putExtra("idioma", idioma)
                     intent.putExtra("nombre", nombre)
                     intent.putExtra("leccion", leccion)
-
+                    actualizarProgreso(idioma!!)
                     this.startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(baseContext, "Incorrecto", Toast.LENGTH_SHORT).show()
                 }
@@ -70,6 +74,7 @@ class OpcionesActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, "Seleciona una opcion", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         btn_opcion1.setOnTouchListener { v, event ->
             btn_opcion1.isPressed = true
@@ -102,6 +107,28 @@ class OpcionesActivity : AppCompatActivity() {
             btn_opcion4.isPressed = true
             true
         }
+    }
+
+    private fun actualizarProgreso(idioma: String) {
+        val idioma:String=idioma
+
+        storage.collection("progreso").whereEqualTo("usuario", usuario.currentUser?.email)
+            .whereEqualTo("idioma",idioma)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    storage.collection("progreso").document(document.id)
+                        .update("progreso", FieldValue.increment(4))
+                    Toast.makeText(this, "¡Progreso guardado!", Toast.LENGTH_SHORT)
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this,
+                    "Error: " + e.toString(),
+                    Toast.LENGTH_SHORT
+                )
+            }
     }
 
     private fun cargarLeccion(idioma: String?, nombre: String?, leccion: String?) {

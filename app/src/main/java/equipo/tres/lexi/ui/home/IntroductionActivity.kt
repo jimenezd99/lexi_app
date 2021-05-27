@@ -44,6 +44,7 @@ class IntroductionActivity: AppCompatActivity() {
             intent.putExtra("nombre", nombre)
             intent.putExtra("leccion", leccion)
             this!!.startActivity(intent)
+            finish()
         }
 
     }
