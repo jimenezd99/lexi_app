@@ -4,7 +4,10 @@ import android.content.Intent
 import android.graphics.DrawFilter
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -135,49 +138,51 @@ class CompletarActivity : AppCompatActivity() {
                     frases = it.get("frases") as List<String>
                     respuestasCorrectas = it.get("respuestas") as List<String>
 
+                    var contador = 1
+
+                    for (frase in frases) {
+                        val array = frase.split("-")
+
+                        when (contador) {
+                            1 -> {
+                                frase1_1.text = array[0]
+                                frase1_2.text = array[1]
+                            }
+
+                            2 -> {
+                                frase2_1.text = array[0]
+                                frase2_2.text = array[1]
+                            }
+
+                            3 -> {
+                                frase3_1.text = array[0]
+                                frase3_2.text = array[1]
+                            }
+
+                            4 -> {
+                                frase4_1.text = array[0]
+                                frase4_2.text = array[1]
+                            }
+
+                            5 -> {
+                                frase5_1.text = array[0]
+                                frase5_2.text = array[1]
+                            }
+
+                            6 -> {
+                                frase6_1.text = array[0]
+                                frase6_2.text = array[1]
+                            }
+                        }
+
+                        contador++
+                    }
+
                 }
                 .addOnFailureListener {
                     Toast.makeText(baseContext, "Error: intente de nuevo", Toast.LENGTH_SHORT)
                         .show()
                 }
-
-            var contador = 1
-
-            frases.forEach {
-                val array = it.split("-")
-
-                when (contador) {
-                    1 -> {
-                        frase1_1.text = array[0]
-                        frase1_2.text = array[1]
-                    }
-
-                    2 -> {
-                        frase2_1.text = array[0]
-                        frase2_2.text = array[1]
-                    }
-
-                    3 -> {
-                        frase3_1.text = array[0]
-                        frase3_2.text = array[1]
-                    }
-
-                    4 -> {
-                        frase4_1.text = array[0]
-                        frase4_2.text = array[1]
-                    }
-
-                    5 -> {
-                        frase5_1.text = array[0]
-                        frase5_2.text = array[1]
-                    }
-
-                    6 -> {
-                        frase6_1.text = array[0]
-                        frase6_2.text = array[1]
-                    }
-                }
-            }
         }
     }
 }

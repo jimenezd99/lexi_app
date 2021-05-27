@@ -61,12 +61,6 @@ class PerfilActivity : AppCompatActivity() {
             val logout = Firebase.auth.signOut()
             var intent: Intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            finish()
-            Toast.makeText(
-                baseContext,
-                "Se ha cerrado correctamente la sesión.",
-                Toast.LENGTH_SHORT
-            ).show()
         }
 
         btnBack.setOnClickListener {
