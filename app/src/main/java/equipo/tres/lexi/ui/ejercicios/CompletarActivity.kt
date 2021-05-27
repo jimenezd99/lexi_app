@@ -2,7 +2,10 @@ package equipo.tres.lexi.ui.ejercicios
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -26,7 +29,7 @@ class CompletarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_completar)
 
         val btn_back = findViewById(R.id.btn_back) as Button
-        val btn_nivel= findViewById(R.id.btn_continuar) as Button
+        val btn_nivel = findViewById(R.id.btn_continuar) as Button
 
         var idioma = intent.getStringExtra("idioma")
         var nombre = intent.getStringExtra("nombre")
@@ -41,7 +44,7 @@ class CompletarActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
-        btn_nivel.setOnClickListener(){
+        btn_nivel.setOnClickListener() {
 
             var campoVacios = false
 
@@ -54,7 +57,11 @@ class CompletarActivity : AppCompatActivity() {
                         campoVacios = true
                     }
 
-                    myEditTextList.add((linearLayoutRespuestas.getChildAt(i) as LinearLayout).getChildAt(1) as EditText)
+                    myEditTextList.add(
+                        (linearLayoutRespuestas.getChildAt(i) as LinearLayout).getChildAt(
+                            1
+                        ) as EditText
+                    )
                 }
             }
 
@@ -62,7 +69,9 @@ class CompletarActivity : AppCompatActivity() {
                 var correctos = true
 
                 for (i in 0 until respuestasCorrectas.size) {
-                    if (!myEditTextList.get(i).text.toString().equals(respuestasCorrectas.get(i), true)) {
+                    if (!myEditTextList.get(i).text.toString()
+                            .equals(respuestasCorrectas.get(i), true)
+                    ) {
                         correctos = false
                     }
                 }
@@ -76,7 +85,11 @@ class CompletarActivity : AppCompatActivity() {
                     intent.putExtra("leccion", leccion)
                     this!!.startActivity(intent)
                 } else {
-                    Toast.makeText(baseContext, "Incorrecto. Revisa los campos.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext,
+                        "Incorrecto. Revisa los campos.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
                 Toast.makeText(baseContext, "Hay campos vacios", Toast.LENGTH_SHORT).show()
@@ -95,49 +108,51 @@ class CompletarActivity : AppCompatActivity() {
                     frases = it.get("frases") as List<String>
                     respuestasCorrectas = it.get("respuestas") as List<String>
 
+                    var contador = 1
+
+                    for (frase in frases) {
+                        val array = frase.split("-")
+
+                        when (contador) {
+                            1 -> {
+                                frase1_1.text = array[0]
+                                frase1_2.text = array[1]
+                            }
+
+                            2 -> {
+                                frase2_1.text = array[0]
+                                frase2_2.text = array[1]
+                            }
+
+                            3 -> {
+                                frase3_1.text = array[0]
+                                frase3_2.text = array[1]
+                            }
+
+                            4 -> {
+                                frase4_1.text = array[0]
+                                frase4_2.text = array[1]
+                            }
+
+                            5 -> {
+                                frase5_1.text = array[0]
+                                frase5_2.text = array[1]
+                            }
+
+                            6 -> {
+                                frase6_1.text = array[0]
+                                frase6_2.text = array[1]
+                            }
+                        }
+
+                        contador++
+                    }
+
                 }
                 .addOnFailureListener {
                     Toast.makeText(baseContext, "Error: intente de nuevo", Toast.LENGTH_SHORT)
                         .show()
                 }
-
-            var contador = 1
-
-            frases.forEach {
-                val array = it.split("-")
-
-                when (contador) {
-                    1 -> {
-                        frase1_1.text = array[0]
-                        frase1_2.text = array[1]
-                    }
-
-                    2 -> {
-                        frase2_1.text = array[0]
-                        frase2_2.text = array[1]
-                    }
-
-                    3 -> {
-                        frase3_1.text = array[0]
-                        frase3_2.text = array[1]
-                    }
-
-                    4 -> {
-                        frase4_1.text = array[0]
-                        frase4_2.text = array[1]
-                    }
-
-                    5 -> {
-                        frase5_1.text = array[0]
-                        frase5_2.text = array[1]
-                    }
-
-                    6 -> {
-                        frase6_1.text = array[0]
-                        frase6_2.text = array[1]
-                    }
-                }
-            }
         }
     }
 }

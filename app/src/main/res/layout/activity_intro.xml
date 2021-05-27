@@ -60,6 +60,7 @@
                 android:text="@string/lorem_ipsum"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_intro"
+                android:justificationMode="inter_word"
                 android:textStyle="normal" />
 
             <Button
