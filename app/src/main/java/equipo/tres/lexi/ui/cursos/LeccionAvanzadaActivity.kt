@@ -17,9 +17,11 @@ class LeccionAvanzadaActivity : AppCompatActivity() {
         btn_continuar.setOnClickListener {
             val intent = Intent(this, NivelesActivity::class.java)
             startActivity(intent)
+            finish()
         }
         btn_back.setOnClickListener {
             super.onBackPressed()
+            finish()
 
         }
     }

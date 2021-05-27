@@ -1,6 +1,8 @@
 package equipo.tres.lexi.ui.ejercicios
 
 import android.content.Intent
+import android.graphics.DrawFilter
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import equipo.tres.lexi.R
 import equipo.tres.lexi.ui.home.NivelesActivity
@@ -42,6 +45,7 @@ class CompletarActivity : AppCompatActivity() {
 
         btn_back.setOnClickListener {
             super.onBackPressed()
+            finish()
         }
 
         btn_nivel.setOnClickListener() {
@@ -83,7 +87,9 @@ class CompletarActivity : AppCompatActivity() {
                     intent.putExtra("idioma", idioma)
                     intent.putExtra("nombre", nombre)
                     intent.putExtra("leccion", leccion)
+                    actualizarProgreso(idioma!!)
                     this!!.startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(
                         baseContext,
@@ -95,7 +101,31 @@ class CompletarActivity : AppCompatActivity() {
                 Toast.makeText(baseContext, "Hay campos vacios", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
+
+    private fun actualizarProgreso(idioma: String) {
+        val idioma:String=idioma
+
+        storage.collection("progreso").whereEqualTo("usuario", usuario.currentUser?.email)
+            .whereEqualTo("idioma",idioma)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    storage.collection("progreso").document(document.id)
+                        .update("progreso", FieldValue.increment(4))
+                    Toast.makeText(this, "¡Progreso guardado!", Toast.LENGTH_SHORT)
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(
+                    this,
+                    "Error: " + e.toString(),
+                    Toast.LENGTH_SHORT
+                )
+            }
+    }
+
 
     private fun cargarLeccion(idioma: String?, nombre: String?, leccion: String?) {
         if (idioma != null && nombre != null && leccion != null) {

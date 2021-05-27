@@ -56,8 +56,9 @@
                 android:id="@+id/imagen_perfil"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/ic_baseline_account_circle_24"
-                android:contentDescription="@string/foto_de_perfil" />
+                android:src="@drawable/ic_mochi_mochi_peach_cat_friend_2_"
+                android:contentDescription="@string/foto_de_perfil"
+                android:background="@drawable/btn_azul"/>
 
             <TextView
                 android:id="@+id/txt_nombre"
@@ -68,15 +69,15 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tv_idioma1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Inglés Nivel 10"
                 android:textSize="15sp"/>
 
             <TextView
+                android:id="@+id/idioma2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Francés Nivel 1"
                 android:textSize="15sp"/>
 
             <LinearLayout
@@ -96,9 +97,10 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_progreso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Inglés 58%" />
+                        />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_ingles"
@@ -107,13 +109,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:progressDrawable="@drawable/progress_bar_gradient"
-                        android:progress="100"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Francés 10%"/>
+                        />
 
                     <ProgressBar
                         android:id="@+id/progress_bar_frances"
@@ -122,7 +123,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="10dp"
                         android:progressDrawable="@drawable/progress_bar_gradient"
-                        android:progress="10"
                         />
                 </LinearLayout>
 

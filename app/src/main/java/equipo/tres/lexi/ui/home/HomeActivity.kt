@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.GridView
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import equipo.tres.lexi.data.cursos.Nivel
 import equipo.tres.lexi.R
 import equipo.tres.lexi.data.cursos.Curso
@@ -21,6 +22,8 @@ import equipo.tres.lexi.ui.perfil.PerfilActivity
 class HomeActivity : AppCompatActivity() {
     var adapter: CursoAdapter? = null
     var cursos = ArrayList<Curso>()
+    private lateinit var usuario: FirebaseAuth
+    private lateinit var storage: FirebaseFirestore
 
 
     private val nav = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -49,19 +52,20 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        usuario = Firebase.auth
+        storage = FirebaseFirestore.getInstance()
         val gvCursos: GridView = findViewById(R.id.gv_cursos)
         val tv_bienvenida: TextView = findViewById(R.id.tv_bienvenida)
         val bundle = intent.extras
 
-        if(bundle != null){
-            val nombre = bundle.getString("name")
+//            val nombre = storage.
+//
+//            tv_bienvenida.append(nombre)
 
-            tv_bienvenida.append(nombre)
-        }
 
         cargarCursos()
         adapter =
-            CursoAdapter(this, cursos)
+            CursoAdapter(this, cursos,usuario,storage)
         gvCursos.adapter = adapter
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -147,10 +151,14 @@ class HomeActivity : AppCompatActivity() {
     class CursoAdapter : BaseAdapter {
         var cursos = ArrayList<Curso>()
         var contexto: Context? = null
+        private lateinit var usuario: FirebaseAuth
+        private lateinit var storage: FirebaseFirestore
 
-        constructor(context: Context, cursos: ArrayList<Curso>) {
+        constructor(context: Context, cursos: ArrayList<Curso>, usuario:FirebaseAuth, storage:FirebaseFirestore) {
             this.contexto = context
             this.cursos = cursos
+            this.usuario=usuario
+            this.storage=storage
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -172,9 +180,28 @@ class HomeActivity : AppCompatActivity() {
                 intent.putExtra("imagen", curso.image)
                 intent.putExtra("niveles", curso.niveles)
                 intent.putExtra("progreso", (curso.progreso))
+                updateProgreso(curso)
                 contexto!!.startActivity(intent)
+
+
             }
             return vista
+        }
+
+        fun updateProgreso(curso:Curso){
+            val progreso = hashMapOf(
+                "idioma" to curso.nombre,
+                "nivel" to "3"
+            )
+            storage.collection("progreso")
+                .document(this.usuario.currentUser!!.email.toString())
+                .update(progreso as Map<String, Any>)
+                .addOnSuccessListener {
+                    Toast.makeText(this.contexto, "Se ha actualizado correctamente el progreso del usuario.", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener{
+                    Toast.makeText(this.contexto, "No se ha actualizado correctamente el progreso del usuario.", Toast.LENGTH_SHORT).show()
+                }
         }
 
         override fun getItem(position: Int): Any {

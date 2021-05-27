@@ -21,7 +21,8 @@ class NivelesActivity : AppCompatActivity() {
 
     var adapter: NivelAdapter? = null
     var niveles = ArrayList<Nivel>()
-
+    private val valorLeccion: Float = 4F
+    var progreso:Int=0
     var idioma: String = ""
     var leccion: String = ""
 
@@ -51,67 +52,43 @@ class NivelesActivity : AppCompatActivity() {
     }
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_niveles)
+        storage = FirebaseFirestore.getInstance()
+        usuario = FirebaseAuth.getInstance()
 
         val btn_back = findViewById(R.id.btn_back) as Button
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(nav)
 
+
+
         idioma = getIntent().getStringExtra("idioma")!!;
 
         btn_back.setOnClickListener {
             super.onBackPressed()
+            finish()
         }
         //homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         val gvNiveles: GridView = findViewById(R.id.gv_niveles)
 
-        storage = FirebaseFirestore.getInstance()
-        usuario = FirebaseAuth.getInstance()
-
         cargarNiveles()
-        adapter =
-            NivelAdapter(this, niveles, idioma)
+        adapter = NivelAdapter(this, niveles, idioma)
         gvNiveles.adapter = adapter
     }
 
     private fun cargarNiveles() {
-        /*niveles.add(
-            Nivel(
-                "Nivel 1 Básico",
-                R.drawable.basico,
-                R.string.lorem_ipsum,
-                "basico",
-                66
-            )
-        )
-        niveles.add(
-            Nivel(
-                "Nivel 2 Básico",
-                R.drawable.frases,
-                R.string.lorem_ipsum,
-                "basico",
-                0
-            )
-        )
-        niveles.add(
-            Nivel(
-                "Nivel 3 Básico",
-                R.drawable.profesiones,
-                R.string.lorem_ipsum,
-                "basico",
-                0
-            )
-        )*/
 
-        storage.collection("cursos").document(idioma)
+            storage.collection("cursos").document(idioma)
             .collection("niveles")
             .get()
             .addOnSuccessListener {
-                it.forEach {
 
+                it.forEach {
+                    obtenerProgreso()
                     println(it)
                     niveles.add(
                         Nivel(
@@ -119,14 +96,26 @@ class NivelesActivity : AppCompatActivity() {
                             R.drawable.profesiones,
                             (it.get("intro") as List<String>?)!!,
                             it.id,
-                            0
-                        )
+                            progreso)
                     )
                 }
                 adapter = NivelAdapter(applicationContext, niveles, idioma)
                 gv_niveles.adapter = adapter
             }
             .addOnFailureListener {
+                Toast.makeText(getBaseContext(), "Error: intente de nuevo", Toast.LENGTH_SHORT)
+                    .show()
+            }
+    }
+    private fun obtenerProgreso() {
+//        val idioma:String=storage.collection("progreso").document("curso").toString()
+        storage.collection("progreso").whereEqualTo("email", usuario.currentUser?.email)
+            .whereEqualTo("idioma",idioma)
+            .get().addOnSuccessListener { result ->
+                for (document in result){
+                    progreso=document.data.get("progreso").toString().toInt()
+                }
+            }.addOnFailureListener {
                 Toast.makeText(getBaseContext(), "Error: intente de nuevo", Toast.LENGTH_SHORT)
                     .show()
             }
@@ -171,6 +160,7 @@ class NivelesActivity : AppCompatActivity() {
                 intent.putExtra("progreso", nivel.progreso)
 
                 contexto!!.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+
             }
             return vista
         }

@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/azul_pastel</item>
         <item name="colorPrimaryVariant">@color/morado_pastel</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/morado_pastel</item>
         <item name="colorSecondaryVariant">@color/rosa_pastel</item>
