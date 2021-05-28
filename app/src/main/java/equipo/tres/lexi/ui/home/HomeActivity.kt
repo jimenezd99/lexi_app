@@ -197,7 +197,7 @@ class HomeActivity : AppCompatActivity() {
                 .document(this.usuario.currentUser!!.email.toString())
                 .update(progreso as Map<String, Any>)
                 .addOnSuccessListener {
-                    Toast.makeText(this.contexto, "Se ha actualizado correctamente el progreso del usuario.", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this.contexto, "Se ha actualizado correctamente el progreso del usuario.", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener{
                     Toast.makeText(this.contexto, "No se ha actualizado correctamente el progreso del usuario.", Toast.LENGTH_SHORT).show()

@@ -85,7 +85,32 @@ class RegistroActivity : AppCompatActivity() {
         storage.collection("usuarios")
             .add(userData)
             .addOnSuccessListener {
+//                Toast.makeText(baseContext, " se ha guardado correctamente la info del usuario.", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener {
+                Toast.makeText(
+                    baseContext,
+                    "No se ha guardado correctamente la info del usuario.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
 
+    fun registrarProgreso(email: String) {
+        val progreso = hashMapOf(
+            "usuario" to email,
+            "idioma" to "",
+            "nivel" to "",
+            "progreso" to "1"
+        )
+        storage.collection("progreso").document(email).set(progreso)
+            .addOnSuccessListener {
+                Toast.makeText(
+                    baseContext,
+                    "Se ha guardado correctamente el progreso del usuario.",
+                    Toast.LENGTH_SHORT
+                ).show()
+                //Toast.makeText(baseContext, " se ha guardado correctamente la info del usuario.", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener {
                 Toast.makeText(
